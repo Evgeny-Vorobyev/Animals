@@ -25,3 +25,19 @@ class AnimalRegistry:
                 print(f"Животное {name} обучено новым командам!")
                 return
         print("Животное не найдено!")
+
+class Animal:
+    def __init__(self, name, commands=None):
+        self.name = name
+        self.commands = commands if commands else []
+
+    def add_commands(self, new_commands):
+        self.commands.extend(new_commands)
+
+
+class DomesticAnimal(Animal):
+    pass
+
+
+class WorkingAnimal(Animal):
+    pass
