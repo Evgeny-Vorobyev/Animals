@@ -1,0 +1,27 @@
+class AnimalRegistry:
+    def __init__(self):
+        self.domestic_animals = []
+        self.working_animals = []
+
+    def add_animal(self, name, animal_type, commands=None):
+        if animal_type == "домашнее":
+            self.domestic_animals.append(DomesticAnimal(name, commands))
+        elif animal_type == "вьючное":
+            self.working_animals.append(WorkingAnimal(name, commands))
+        else:
+            print("Неправильный тип животного!")
+
+    def list_commands(self, name):
+        for animal in self.domestic_animals + self.working_animals:
+            if animal.name == name:
+                print(f"Список команд для животного {name}: {animal.commands}")
+                return
+        print("Животное не найдено!")
+
+    def train_animal(self, name, new_commands):
+        for animal in self.domestic_animals + self.working_animals:
+            if animal.name == name:
+                animal.add_commands(new_commands)
+                print(f"Животное {name} обучено новым командам!")
+                return
+        print("Животное не найдено!")
